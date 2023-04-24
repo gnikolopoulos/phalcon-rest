@@ -1,0 +1,26 @@
+{
+    "name": "gnikolopoulos/phalcon-rest",
+    "description": "Phalcon REST Library",
+    "require": {
+        "php": ">=7.4",
+        "ext-phalcon": ">=5.0"
+    },
+    "suggest": {
+        "league/fractal": "^0.19.2",
+        "firebase/php-jwt": "^5.5.1"
+    },
+    "authors": [
+        {
+            "name" : "George Nikolopoulos",
+            "email" : "georgen@interactive-design.gr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PhalconRest\\": "src/PhalconRest"
+        },
+        "psr-0": {
+            "AclAdapterMountTrait": "src/PhalconRest/Acl"
+        }
+    }
+}
