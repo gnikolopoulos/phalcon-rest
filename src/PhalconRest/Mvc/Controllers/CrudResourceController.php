@@ -221,36 +221,6 @@ class CrudResourceController extends \PhalconRest\Mvc\Controllers\ResourceContro
 
     /*** GENERAL HOOKS ***/
 
-    protected function getPostedData()
-    {
-        $resourcePostedDataMode = $this->getResource()->getPostedDataMethod();
-        $endpointPostedDataMode = $this->getEndpoint()->getPostedDataMethod();
-
-        $postedDataMode = $resourcePostedDataMode;
-        if ($endpointPostedDataMode != PostedDataMethods::AUTO) {
-            $postedDataMode = $endpointPostedDataMode;
-        }
-
-        $postedData = null;
-
-        switch ($postedDataMode) {
-
-            case PostedDataMethods::POST:
-                $postedData = $this->request->getPost();
-                break;
-
-            case PostedDataMethods::JSON_BODY:
-                $postedData = $this->request->getJsonRawBody(true);
-                break;
-
-            case PostedDataMethods::AUTO:
-            default:
-                $postedData = $this->request->getPostedData();
-        }
-
-        return $postedData;
-    }
-
     protected function onNoDataProvided()
     {
         throw new Exception(ErrorCodes::POST_DATA_NOT_PROVIDED, 'No post-data provided');
